@@ -20,19 +20,17 @@
 
 ## items　テーブル
 
-| Column              | Type       | Options                          |
-| ------------------- | ---------- | -------------------------------- |
-| name                | string     | null: false                      |
-| text                | text       | null: false                      |
-| price               | integer    | null: false                      |
-| fee                 | integer    | null: false                      |
-| profit              | integer    | null: false                      |
-| user                | references | null: false, foreign_key: true   |
-| category            | integer    | null: false                      |ActiveHushで実装する
-| state               | integer    | null: false                      |ActiveHushで実装する
-| delivery_fee        | integer    | null: false                      |ActiveHushで実装する
-| delivery_prefecture | integer    | null: false                      |ActiveHushで実装する
-| delivery_date       | integer    | null: false                      |ActiveHushで実装する
+| Column                 | Type       | Options                          |
+| ---------------------- | ---------- | -------------------------------- |
+| name                   | string     | null: false                      |
+| text                   | text       | null: false                      |
+| price                  | integer    | null: false                      |
+| user                   | references | null: false, foreign_key: true   |
+| category_id            | integer    | null: false                      |ActiveHushで実装する
+| state_id               | integer    | null: false                      |ActiveHushで実装する
+| delivery_fee_id        | integer    | null: false                      |ActiveHushで実装する
+| delivery_prefecture_id | integer    | null: false                      |ActiveHushで実装する
+| delivery_date_id       | integer    | null: false                      |ActiveHushで実装する
 
 ## Association
 - has_one_attached :image
@@ -50,7 +48,7 @@
 
 ## Association
 
-- belongs_to :items
+- belongs_to :item (単数形)
 - belongs_to :user (単数形)
 - has_one :address (単数形)
 
