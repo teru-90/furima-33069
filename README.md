@@ -2,16 +2,16 @@
 
 ## users　テーブル
 
-| Column             | Type   | Options     |
-| ----------         | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_name_kana     | string | null: false |
-| first_name_kana    | string | null: false |
-| birthday           | date   | null: false |
+| Column             | Type   | Options                   |
+| ----------         | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
 ## Association
 - has_many :items
@@ -24,7 +24,7 @@
 | ---------------------- | ---------- | -------------------------------- |
 | name                   | string     | null: false                      |
 | text                   | text       | null: false                      |
-| price                  | integer    | null: false                      |
+| price                  | integer    | null: false                      |　
 | user                   | references | null: false, foreign_key: true   |
 | category_id            | integer    | null: false                      |ActiveHushで実装する
 | state_id               | integer    | null: false                      |ActiveHushで実装する
@@ -36,7 +36,6 @@
 - has_one_attached :image
 - belongs_to :user (単数形)
 - has_one :record (単数形)
-- has_one :address (単数形)
 
 
 ## records　テーブル
