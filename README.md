@@ -22,7 +22,7 @@
 
 | Column                 | Type       | Options                          |
 | ---------------------- | ---------- | -------------------------------- |
-| name                   | string     | null: false                      |
+| product_name           | string     | null: false                      |
 | text                   | text       | null: false                      |
 | price                  | integer    | null: false                      |　
 | user                   | references | null: false, foreign_key: true   |
