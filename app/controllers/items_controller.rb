@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     # 記事一覧を新規投稿順に並べる
-    @items = Item.order("created_at DESC")
+    # @items = Item.order("created_at DESC")
   end
 
   def new
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.valid?
       @item.save
       return redirect_to root_path
