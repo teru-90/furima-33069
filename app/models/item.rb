@@ -6,7 +6,6 @@ class Item < ApplicationRecord
     validates :text, length: { maximum: 1000 }
     validates :price, numericality:{ only_integer: true, with: /\A[0-9]+\z/, greater_than_or_equal_to:300,
                                      less_than_or_equal_to:9999999, message:"半角数字300以上9999999以下で入力して下さい" }
-    validates :user
     validates :image
   end
   #「--」は保存したくないので、ジャンルの選択がid: 1)以外であれば保存できる
