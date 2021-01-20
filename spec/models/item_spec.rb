@@ -35,7 +35,7 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが1だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it '商品の状態が空だと登録できない' do
         @item.state_id = ''
@@ -45,7 +45,7 @@ RSpec.describe Item, type: :model do
       it '商品の状態が1だと登録できない' do
         @item.state_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("State must be other than 1")
+        expect(@item.errors.full_messages).to include('State must be other than 1')
       end
       it '配送料が空だと登録できない' do
         @item.delivery_fee_id = ''
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it '配送料が1だと登録できない' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
       end
       it '配送元の地域が空だと登録できない' do
         @item.delivery_prefecture_id = ''
@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       it '配送元の地域が1だと登録できない' do
         @item.delivery_prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Delivery prefecture must be other than 1')
       end
       it '発送までの日数が空だと登録できない' do
         @item.delivery_date_id = ''
@@ -75,7 +75,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数が1だと登録できない' do
         @item.delivery_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery date must be other than 1")
+        expect(@item.errors.full_messages).to include('Delivery date must be other than 1')
       end
       it '価格が空だと登録できない' do
         @item.price = ''
@@ -85,17 +85,17 @@ RSpec.describe Item, type: :model do
       it '価格範囲が300未満は登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字300以上9999999以下で入力して下さい")
+        expect(@item.errors.full_messages).to include('Price 半角数字300以上9999999以下で入力して下さい')
       end
       it '価格範囲が9,999,999より大きいと登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字300以上9999999以下で入力して下さい")
+        expect(@item.errors.full_messages).to include('Price 半角数字300以上9999999以下で入力して下さい')
       end
       it '価格は半角数字でないければ登録できない' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price 半角数字300以上9999999以下で入力して下さい")
+        expect(@item.errors.full_messages).to include('Price 半角数字300以上9999999以下で入力して下さい')
       end
     end
   end
