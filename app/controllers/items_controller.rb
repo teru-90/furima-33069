@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
 
   def index
     # 記事一覧を新規投稿順に並べる
-    # @items = Item.order("created_at DESC")
+    @items = Item.all.order(id: "DESC")
+   
   end
 
   def new
