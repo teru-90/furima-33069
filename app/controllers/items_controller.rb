@@ -26,15 +26,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id])
+    # before_action :find_item で設定済み @item = Item.find(params[:id])
   end
 
   def edit
-    # @item = Item.find(params[:id])
+    # find_item参照
   end
 
   def update
-    # @item = Item.find(params[:id])
+     # find_item参照
     if @item.update(item_params)
       redirect_to item_path
     else
