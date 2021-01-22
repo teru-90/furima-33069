@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   #ログインしてない人はログインページへ
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
   #ログインせずに以下にアクセスする人はトップページへ
   before_action :move_to_signe_in_path, only:[:edit] #, :destroy
   
