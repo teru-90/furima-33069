@@ -1,5 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  #ログインしてない人はログインページへ
+  before_action :authenticate_user!, only: [:new, :edit, :update]
+
+  before_action :find_item, only: [:show, :edit, :update]
+  #ログインせずに以下にアクセスする人はトップページへ
+  before_action :move_to_root_path, only: [:edit, :update] #, :destroy
 
   def index
     # 記事一覧を新規投稿順に並べる
@@ -21,7 +26,20 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    # before_action :find_item で設定済み @item = Item.find(params[:id])
+  end
+
+  def edit
+    # find_item参照
+  end
+
+  def update
+     # find_item参照
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -30,4 +48,15 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:product_name, :text, :price, :category_id, :state_id, :delivery_fee_id,
                                  :delivery_prefecture_id, :delivery_date_id, :image).merge(user_id: current_user.id)
   end
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
+
+  def move_to_root_path  
+    if  current_user.id != @item.user.id
+      redirect_to  root_path
+    end
+  end
+
 end
