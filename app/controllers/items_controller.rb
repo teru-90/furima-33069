@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   #ログインしてない人はログインページへ
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :update]
+
+  before_action :find_item, only: [:show, :edit, :update]
   #ログインせずに以下にアクセスする人はトップページへ
-  before_action :move_to_signe_in_path, only:[:edit] #, :destroy
-  
+  before_action :move_to_root_path, only: [:edit, :update] #, :destroy
 
   def index
     # 記事一覧を新規投稿順に並べる
@@ -25,15 +26,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -48,9 +49,14 @@ class ItemsController < ApplicationController
                                  :delivery_prefecture_id, :delivery_date_id, :image).merge(user_id: current_user.id)
   end
 
-  def move_to_signe_in_path  
-    unless  current_user.id == Item.find(params[:id]).user.id
+  def find_item
+    @item = Item.find(params[:id])
+  end
+
+  def move_to_root_path  
+    if  current_user.id != @item.user.id
       redirect_to  root_path
     end
   end
+
 end
