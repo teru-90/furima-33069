@@ -10,6 +10,10 @@ RSpec.describe Order, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order).to be_valid
       end
+      it '建物名がなくても保存できること' do
+        @order.building = ""
+        expect(@order).to be_valid
+      end
     end
 
     context '商品購入がうまくいかない時' do
@@ -17,6 +21,16 @@ RSpec.describe Order, type: :model do
         @order.token = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空では登録できないこと' do
+        @order.user_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空では登録できないこと' do
+        @order.item_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
       it '配送先の情報として、郵便番号が空だと保存できないこと' do
         @order.postcode = ''

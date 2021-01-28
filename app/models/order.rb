@@ -1,7 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :product_name, :text, :price, :postcode, :prefecture_id, :city, :bloc, :building, :phone,
-                :record_id, :token
+  attr_accessor :user_id, :item_id, :product_name, :text, :price, :postcode, :prefecture_id, :city, :bloc, :building, :phone, :token
 
   # ここにバリデーションの処理を書く
   with_options presence: true do

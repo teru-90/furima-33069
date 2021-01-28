@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   # ログインしているユーザーが出品者でない場合、以下にアクセスする時はトップページへ
   before_action :move_to_root_path, only: [:edit, :update, :destroy]
+  # 出品者・出品者以外にかかわらず、売却済み商品の商品情報編集ページへ遷移しようとすると、トップページへ
+  before_action :sold_out, only: [:edit]
 
   def index
     # 記事一覧を新規投稿順に並べる
@@ -60,5 +62,9 @@ class ItemsController < ApplicationController
 
   def move_to_root_path
     redirect_to root_path if current_user.id != @item.user.id
+  end
+
+  def sold_out
+    redirect_to root_path if @item.record != nil
   end
 end
