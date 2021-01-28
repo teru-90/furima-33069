@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :find_item, only: [:index, :create]
   # ログインしているユーザーが出品者の場合、以下にアクセスする時はトップページへ
   before_action :move_to_root_path, only: [:index, :create]
   # ログインしているユーザー売却済み商品にアクセスする時はトップページへ
+  # before_action :sold_out, only: [:index, :create]
 
   def index
     # before_action :find_item で設定済み @item = Item.find(params[:item_id])
@@ -33,6 +35,10 @@ class OrdersController < ApplicationController
 
   def move_to_root_path
     redirect_to root_path if current_user.id == @item.user.id
+  end
+
+  def sold_out
+    redirect_to root_path if 
   end
 
   def pay_item
