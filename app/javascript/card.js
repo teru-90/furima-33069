@@ -27,7 +27,6 @@ const pay = () => {
         const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      // binding.pry
 
       // フォームのカード情報の削除
       document.getElementById("card-number").removeAttribute("name");
