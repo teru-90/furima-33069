@@ -61,7 +61,7 @@
 | city                | string     | null: false                      |
 | bloc                | string     | null: false                      |
 | building            | string     |                                  |
-| tel                 | string     | null: false                      |
+| phone               | string     | null: false                      |
 | record              | references | null: false, foreign_key: true   |
 
 
