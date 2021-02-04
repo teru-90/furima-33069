@@ -29,7 +29,7 @@ Basic認証　ユーザー名：admin パスワード：2222
 ・ruby 2.6.5
 ・Rails 6.0.3.4
 
-% 
+% https://github.com/teru-90/furima-33069.git
 % cd furima-333069
 % bundle install
 
