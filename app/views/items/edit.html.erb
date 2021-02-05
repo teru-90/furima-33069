@@ -21,11 +21,21 @@ app/assets/stylesheets/items/new.css %>
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :images, name: 'item[images][]', id:"item-image" %>
       </div>
     </div>
     <%# 出品画像のプレビュー %>
-     <div id="image-list"></div>
+    <div id="image-list"></div>
+    <%# <div class='item-img-content'> %>
+      <%= image_tag @item.images[0] ,class:"images" %>
+
+      <div class="item-box-other-img">
+        <% @item.images.each do |image| %>
+          <%= image_tag image, class: 'edit-images-mini' %> 
+        <% end %> 
+      </div>
+    <%# </div> %>
+
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
     <div class="new-items">
@@ -33,15 +43,15 @@ app/assets/stylesheets/items/new.css %>
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :product_name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
-        <div class="weight-bold-text">
-          商品の説明
-          <span class="indispensable">必須</span>
+        <%= f.text_area :product_name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <div class="items-explain">
+          <div class="weight-bold-text">
+             商品の説明
+             <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
         </div>
-        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
-    </div>
     <%# /商品名と商品説明 %>
 
     <%# 商品の詳細 %>

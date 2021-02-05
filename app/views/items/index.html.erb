@@ -124,61 +124,64 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
-     <ul class='item-lists'>
-       <% if @items.length != 0 %>
-        <% @items.each do |item| %>
-      <li class='list'>
-        <%= link_to item_path(item.id) do %> 
-          <div class='item-img-content'>
-            <%= image_tag item.image, class: "item-img" %>
+      <ul class='item-lists'>
+        <% if @items.length != 0 %>
+          <% @items.each do |item| %>
+            <li class='list'>
+              <%= link_to item_path(item.id) do %> 
+                <div class='item-img-content'>
+                  <% if item.images.length != 0  %>
+                    <%= image_tag item.images[0], class: "item-img" %>
+                  <% else %>
+                      <div class="item-img" ></div> 
+                  <% end %>
 
-            <%# 商品が売れていればsold outを表示される %>
-            <% if item.record != nil %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
-            <% end %>
-
-          </div>
-          <div class='item-info'>
-            <h3 class='item-name'>
-              <%= item.product_name %>
-            </h3>
-            <div class='item-price'>
-              <span><%= item.price %>円<br><%= item.delivery_fee[:name] %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+                  <%# 商品が売れていればsold outを表示される %>
+                  <% if item.record != nil %>
+                    <div class='sold-out'>
+                      <span>Sold Out!!</span>
+                    </div>
+                  <% end %>
+                 </div>
+                 <div class='item-info'>
+                  <h3 class='item-name'>
+                    <%= item.product_name %>
+                  </h3>
+                  <div class='item-price'>
+                    <span><%= item.price %>円<br><%= item.delivery_fee[:name] %></span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+          <%# 商品がない場合は以下のダミー商品が表示される %>
+        <% else %>
+          <li class='list'>
+            <%= link_to '#' do %>
+              <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  商品を出品してね！
+                </h3>
+                <div class='item-price'>
+                  <span>99999999円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                 </div>
               </div>
-            </div>
-          </div>
+             <% end %>
+          </li>
         <% end %>
-      </li>
-      <% end %>
-      <%# 商品がない場合は以下のダミー商品が表示される %>
-      <% else %>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <% end %>
-      <%# //商品がない場合は以下のダミー商品が表示される %>
-    </ul>
-  </div>
-  <%# /商品一覧 %>
+         <%# //商品がない場合は以下のダミー商品が表示される %>
+      </ul>
+    </div>
+   <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
