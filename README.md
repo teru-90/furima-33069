@@ -10,7 +10,7 @@ https://furima-33069.herokuapp.com/
 # テスト用アカウント
 Basic認証　ユーザー名：admin パスワード：2222
 出品者用メールアドレス：test@gmail.com　パスワード：1111aaaa
-購入者用メール：test@gmail.com　パスワード：1111aaaa
+購入者用メール：test0@gmail.com　パスワード：1111aaaa
 
 # 利用方法
 ・　Basic認証のユーザー名とパスワードを入力
