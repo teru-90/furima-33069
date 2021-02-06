@@ -23,62 +23,62 @@ RSpec.describe Order, type: :model do
       it 'tokenが空では登録できないこと' do
         @order.token = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Token can't be blank")
+        expect(@order.errors.full_messages).to include("カード情報を入力してください")
       end
       it 'user_idが空では登録できないこと' do
         @order.user_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("User can't be blank")
+        expect(@order.errors.full_messages).to include("Userを入力してください")
       end
       it 'item_idが空では登録できないこと' do
         @order.item_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Item can't be blank")
+        expect(@order.errors.full_messages).to include("Itemを入力してください")
       end
       it '配送先の情報として、郵便番号が空だと保存できないこと' do
         @order.postcode = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Postcode can't be blank")
+        expect(@order.errors.full_messages).to include("郵便番号を入力してください")
       end
       it '配送先の情報として、郵便番号がハイフン(−)を含んでいないとだと保存できないこと' do
         @order.postcode = '0010000'
         @order.valid?
-        expect(@order.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
+        expect(@order.errors.full_messages).to include("郵便番号は(−)を入れて7文字で入力してください")
       end
       it '配送先の情報として、都道府県が空だと保存できないこと' do
         @order.prefecture_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order.errors.full_messages).to include("都道府県を入力してください")
       end
       it '配送先の情報として、都道府県のIDが１だと保存できないこと' do
         @order.prefecture_id = 1
         @order.valid?
-        expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order.errors.full_messages).to include("都道府県は−−以外を選択してください")
       end
       it '配送先の情報として、市区町村が空だと保存できないこと' do
         @order.city = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("City can't be blank")
+        expect(@order.errors.full_messages).to include("市区町村を入力してください")
       end
       it '配送先の情報として、番地が空だと保存できないこと' do
         @order.bloc = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Bloc can't be blank")
+        expect(@order.errors.full_messages).to include("番地を入力してください")
       end
       it '配送先の情報として電話番号が空だと保存できないこと' do
         @order.phone = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone can't be blank")
+        expect(@order.errors.full_messages).to include("電話番号を入力してください")
       end
       it '配送先の情報として電話番号がハイフン(−)を含んでいると保存できないこと' do
         @order.phone = '090-1234-5678'
         @order.valid?
-        expect(@order.errors.full_messages).to include('Phone は半角数字で入力してください')
+        expect(@order.errors.full_messages).to include("電話番号は半角数字で入力してください")
       end
       it '配送先の情報として電話番号が12桁以上だと保存できないこと' do
         @order.phone = '123456789012'
         @order.valid?
-        expect(@order.errors.full_messages).to include('Phone is invalid. Exclude hyphen(-),Twelve or more')
+        expect(@order.errors.full_messages).to include("電話番号は(−)を抜いた11桁までを入力してください")
       end
     end
   end
