@@ -32,7 +32,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # 日本語を対応に変更 en→jaへ
-I18n.locale = 'en'
+I18n.locale = 'ja'
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
