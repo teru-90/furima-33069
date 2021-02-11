@@ -26,7 +26,7 @@ app/assets/stylesheets/items/new.css %>
     </div>
     <%# 出品画像のプレビュー %>
     <div id="image-list"></div>
-    <%# <div class='item-img-content'> %>
+    <div class='item-img-content'>
       <%= image_tag @item.images[0] ,class:"images" %>
 
       <div class="item-box-other-img">
@@ -34,7 +34,7 @@ app/assets/stylesheets/items/new.css %>
           <%= image_tag image, class: 'edit-images-mini' %> 
         <% end %> 
       </div>
-    <%# </div> %>
+    </div>
 
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
